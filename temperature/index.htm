@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Philip's house temperature</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#container').highcharts({
+				chart: {
+					type: 'scatter',
+					zoomType: 'xy',
+				},
+				xAxis: {
+					type: 'datetime'
+				},
+				series: [{
+					name: 'Temperature'
+				}],
+				title: {
+					text: 'Philip\'s house temperature'
+				}
+			});
+		});
+
+		$.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=temperature', function(data) {
+			$.each(data.events, function(key, val) {
+				obj = val;
+				var chart = $('#container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+		</script>
+	</head>
+	<body>
+<script src="../js/highcharts.js"></script>
+<script src="../js/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
