@@ -19,7 +19,10 @@ ${demo.css}
 					type: 'datetime'
 				},
 				series: [{
-					name: 'Temperature'
+					name: 'Testing'
+				},
+				{
+					name: 'Stable'
 				}],
 				title: {
 					text: 'Philip\'s house temperature'
@@ -32,6 +35,14 @@ ${demo.css}
 				obj = val;
 				var chart = $('#container').highcharts();
 				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+
+		$.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=temperature', function(data) {
+			$.each(data.events, function(key, val) {
+				obj = val;
+				var chart = $('#container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
 			});
 		});
 		</script>
