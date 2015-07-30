@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Philip's house</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$('#temperature-container').highcharts("StockChart", {
+				chart: { type: 'scatter',	zoomType: 'xy'},
+				xAxis: { type: 'datetime'	},
+				yAxis: { title: {	text: 'Temperature / degrees Celsius'	}	},
+				series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+				title: { text: 'Temperature' }
+			});
+      $('#light-container').highcharts("StockChart", {
+        chart: { type: 'scatter',	zoomType: 'xy'},
+        xAxis: { type: 'datetime'	},
+        yAxis: { title: {	text: 'Light level'	}	},
+        series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+        title: { text: 'Light' }
+      });
+      $('#noise-avg-container').highcharts("StockChart", {
+				chart: { type: 'scatter',	zoomType: 'xy'},
+				xAxis: { type: 'datetime'	},
+				yAxis: { title: {	text: 'Noise level'	}	},
+				series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+				title: { text: 'Noise average' }
+			});
+      $('#noise-var-container').highcharts("StockChart", {
+        chart: { type: 'scatter',	zoomType: 'xy'},
+        xAxis: { type: 'datetime'	},
+        yAxis: { title: {	text: 'Noise level'	}	},
+        series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+        title: { text: 'Noise variance' }
+      });
+      $('#pir-percentage-container').highcharts("StockChart", {
+        chart: { type: 'scatter',	zoomType: 'xy'},
+        xAxis: { type: 'datetime'	},
+        yAxis: { title: {	text: 'PIR reading'	}	},
+        series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+        title: { text: 'PIR percentage' }
+      });
+      $('#num-runs-container').highcharts("StockChart", {
+        chart: { type: 'scatter',	zoomType: 'xy'},
+        xAxis: { type: 'datetime'	},
+        yAxis: { title: {	text: 'PIR consecutive runs'	}	},
+        series: [{	name: 'Testing'	}, { name: 'Stable'	}],
+        title: { text: 'PIR runs' }
+      });
+    });
+
+		$.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=temperature', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#temperature-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=light', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#light-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=noise-avg', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#noise-avg-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=noise-var', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#noise-var-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=pir-percentage', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#pir-percentage-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=num-consecutive-runs', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#num-runs-container').highcharts();
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=temperature', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#temperature-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=light', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#light-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=noise-avg', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#noise-avg-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=noise-var', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#noise-var-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=pir-percentage', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#pir-percentage-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+    $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=num-consecutive-runs', function(data) {
+			$.each(data.measurements, function(key, val) {
+				obj = val;
+				var chart = $('#num-runs-container').highcharts();
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+			});
+		});
+
+		</script>
+
+  </head>
+
+  <body>
+    <script src="../js/highstock.js"></script>
+    <script src="../js/modules/exporting.js"></script>
+
+    <div class="container-narrow">
+      <div class="content">
+        <div class="page-header">
+          <h1>Philip's house</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div id="temperature-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+          <div class="col-md-6">
+            <div id="light-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div id="noise-avg-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+          <div class="col-md-6">
+            <div id="noise-var-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div id="pir-percentage-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+          <div class="col-md-6">
+            <div id="num-runs-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
