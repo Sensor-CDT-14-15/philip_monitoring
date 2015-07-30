@@ -39,7 +39,7 @@ ${demo.css}
 			$.each(data.measurements, function(key, val) {
 				obj = val;
 				var chart = $('#container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp + ' UTC'), parseFloat(obj.value)]);
 			});
 		});
 
@@ -47,7 +47,7 @@ ${demo.css}
 			$.each(data.measurements, function(key, val) {
 				obj = val;
 				var chart = $('#container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp + ' UTC'), parseFloat(obj.value)]);
 			});
 		});
 		</script>
