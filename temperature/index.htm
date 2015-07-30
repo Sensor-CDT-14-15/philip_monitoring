@@ -36,7 +36,7 @@ ${demo.css}
 		});
 
 		$.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=temperature', function(data) {
-			$.each(data.events, function(key, val) {
+			$.each(data.measurements, function(key, val) {
 				obj = val;
 				var chart = $('#container').highcharts();
 				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
@@ -44,7 +44,7 @@ ${demo.css}
 		});
 
 		$.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=temperature', function(data) {
-			$.each(data.events, function(key, val) {
+			$.each(data.measurements, function(key, val) {
 				obj = val;
 				var chart = $('#container').highcharts();
 				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
