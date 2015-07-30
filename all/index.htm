@@ -59,89 +59,100 @@
     });
 
 		$.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=temperature', function(data) {
+			var chart = $('#temperature-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#temperature-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=light', function(data) {
+			var chart = $('#light-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#light-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=noise-avg', function(data) {
+			var chart = $('#noise-avg-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#noise-avg-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=noise-var', function(data) {
+			var chart = $('#noise-var-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#noise-var-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=pir-percentage', function(data) {
+			var chart = $('#pir-percentage-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#pir-percentage-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=54ff69066667515129441567&measurement=num-consecutive-runs', function(data) {
+			var chart = $('#num-runs-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#num-runs-container').highcharts();
-				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[0].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
 
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=temperature', function(data) {
+			var chart = $('#temperature-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#temperature-container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=light', function(data) {
+			var chart = $('#light-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#light-container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=noise-avg', function(data) {
+			var chart = $('#noise-avg-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#noise-avg-container').highcharts();
 				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
 			});
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=noise-var', function(data) {
+			var chart = $('#noise-var-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#noise-var-container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=pir-percentage', function(data) {
+			var chart = $('#pir-percentage-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#pir-percentage-container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
     $.getJSON('http://109.237.25.161/particle/measurements?device=53ff6d066667574831402467&measurement=num-consecutive-runs', function(data) {
+			var chart = $('#num-runs-container').highcharts();
 			$.each(data.measurements, function(key, val) {
 				obj = val;
-				var chart = $('#num-runs-container').highcharts();
-				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)]);
+				chart.series[1].addPoint([Date.parse(obj.timestamp), parseFloat(obj.value)], false);
 			});
+      chart.redraw();
 		});
 
 		</script>
